@@ -1,1 +1,11 @@
-<p>header works!</p>
+<div class="header">
+  <div class="header__wrap">
+    <a href="/" class="header__logo"></a>
+    <form class="header__search-form" (submit)="$event.preventDefault()">
+      <input class="header__search-filed" type="search" placeholder="What are you want to find out?" #SearchInput>
+      <button class="header__btn header__btn--search" mat-raised-button (click)="setSearchStr(SearchInput.value)">search</button>
+    </form>
+    <button class="header__btn header__btn--filter" mat-raised-button (click)="setIsFilters()"></button>
+  </div>
+  <app-login></app-login>
+</div>
