@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'youtube-client-angular';
+  title:string = 'youtube-client';
+  isSearchResult:boolean = false;
+  isFilters:boolean = false;
+
+  setSearchResult(state:boolean):void{
+    this.isSearchResult = state;
+  }
+
+  setFilters(state:boolean):void{
+    this.isFilters = state;
+  }
 }

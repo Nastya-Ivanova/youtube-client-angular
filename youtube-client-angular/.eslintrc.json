@@ -41,7 +41,9 @@
         "no-console": ["error", { "allow": ["warn", "error"] }],
         "@typescript-eslint/lines-between-class-members": ["error", "always", {
           "exceptAfterSingleLine": true
-        }]
+        }],
+        "no-nested-ternary": "off",
+        "class-methods-use-this" : "off"
       }
     },
     {

@@ -1,4 +1,5 @@
-import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
+import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
+import {ISearchItem} from "./search-item.model";
 
 @Component({
   selector: 'app-search-item',
@@ -6,16 +7,17 @@ import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
   styleUrls: ['./search-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchItemComponent implements OnInit{
-  title = '';
-  description = '';
-  imgUrl = '';
-  viewCount = '';
-  likeCount = '';
-  dislikeCount = '';
-  commentCount = '';
+ export class SearchItemComponent{
+  @Input() searchItem!:ISearchItem;
 
-  ngOnInit() {
-    this.title = 'Search Item';
+  getBorderBottomColor():string{
+    const currentDate = new Date();
+    const videoDate = new Date(this.searchItem.snippet.publishedAt);
+    const diffDay = Math.ceil((currentDate.getTime() - videoDate.getTime()) / (1000*60*60*24));
+
+    return (diffDay >= 183) ? '#ed2f2f' :
+      (diffDay >= 30 && diffDay < 183) ? '#edcd2f' :
+        (diffDay >= 8 && diffDay < 30) ? '#2eaa43' :
+          '#2F80ED';
   }
 }
