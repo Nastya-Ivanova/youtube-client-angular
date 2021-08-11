@@ -1,0 +1,27 @@
+<ul class="statistics-list">
+  <li class="statistics-list__item">
+    <mat-icon aria-hidden="false" aria-label="Example eye icon">remove_red_eye</mat-icon>
+    <span class="statistics-list__text">{{ card.statistics.viewCount }}</span>
+  </li>
+  <li class="statistics-list__item">
+    <mat-icon aria-hidden="false" aria-label="Example likes icon">favorite</mat-icon>
+    <span class="statistics-list__text">{{ card.statistics.likeCount }}</span>
+  </li>
+  <li class="statistics-list__item">
+    <mat-icon
+      class="statistics-list__icon-dislikes"
+      aria-hidden="false"
+      aria-label="Example dislikes icon"
+    ></mat-icon>
+    <span class="statistics-list__text">{{ card.statistics.dislikeCount }}</span>
+  </li>
+  <li class="statistics-list__item">
+    <mat-icon
+      class="statistics-list__icon-commits"
+      aria-hidden="false"
+      aria-label="Example dislikes icon"
+    ></mat-icon>
+    <span class="statistics-list__text">{{ card.statistics.commentCount }}</span>
+  </li>
+</ul>
+

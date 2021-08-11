@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="card" *ngIf="card$ | async as card">
+  <button  class="card__btn-back" routerLink="/main"></button>
+  <img class="card__img" src="{{ card.snippet.thumbnails.maxres.url }}" alt="" width="640">
+  <div class="card__wrap">
+    <div class="card__title-wrap">
+      <h2 class="card__title">{{card.snippet.title}}</h2>
+      <span class="card__date">{{card.snippet.publishedAt | date: 'dd-LL-yyyy / hh:mm'}}</span>
+    </div>
+    <p class="card__desc">Description:</p>
+    <p class="card__text">{{card.snippet.description}}</p>
+    <app-statistics [card]="card"></app-statistics>
+  </div>
+</div>
