@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import {Component, ChangeDetectionStrategy, Input, OnInit, OnDestroy} from '@angular/core';
 import {Subscription} from "rxjs";
+=======
+import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
+>>>>>>> 3b663f4 (feat: add modules, services, routing)
 import { ISearchItem } from './search-item/search-item.model';
 import { TSortKey, TSortOrder } from './filters/filters.types';
 import { ShowSearchResultsService } from '../../services/show-search-results.service';
