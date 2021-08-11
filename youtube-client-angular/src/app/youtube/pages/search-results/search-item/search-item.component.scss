@@ -22,52 +22,6 @@
   height: 123px;
 }
 
-.search-item__icon-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 200px;
-
-  margin: 21px 0;
-  padding: 0;
-
-  list-style: none;
-}
-
-.search-item__icon-item {
-  display: flex;
-  align-items: center;
-}
-
-.mat-icon {
-  width: 13px;
-  height: 13px;
-
-  margin-right: 5px;
-
-  font-size: 15px;
-}
-
-.search-item__icon-text {
-  font-size: 10px;
-}
-
-.search-item__icon-item-dislikes,
-.search-item__icon-item-commits {
-  background-size: 13px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.search-item__icon-item-dislikes {
-  background-image: url('/assets/img/icon-dislike.png');
-}
-
-.search-item__icon-item-commits {
-  background-image: url('/assets/img/icon-commits.png');
-}
-
 .search-item__title,
 .search-item__date {
   padding: 0;

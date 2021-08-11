@@ -1,9 +1,0 @@
-<app-filters *ngIf="isFilters" (filterByStr)="filter($event)" (sortKey)="sort($event)"></app-filters>
-<div class="search-result" *ngIf="isSearchResult">
-  <app-search-item
-    class="search-result__item"
-    *ngFor="let item of searchItems | filter:filterStr | sortBy:sortOrder:sortKey"
-    [searchItem]="item"
-  ></app-search-item>
-</div>
-

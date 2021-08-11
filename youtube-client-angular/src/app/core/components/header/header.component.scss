@@ -1,4 +1,4 @@
-.header {
+.header{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,6 +74,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 15px;
+    border-radius: 5px;
+  }
+
+  &--logout{
+    width: 80px;
+
+    margin-left:15px;
+
+    font-size: 12px;
+    line-height: 24px;
+
     border-radius: 5px;
   }
 }

@@ -1,0 +1,12 @@
+<div class="search-item" [appBorderBottomColor]="searchItem.snippet.publishedAt">
+  <div class="search-item__wrap">
+    <img class="search-item__img" src="{{ searchItem.snippet.thumbnails.medium.url }}" />
+    <app-statistics [card]="searchItem"></app-statistics>
+    <p class="search-item__date">
+      {{ searchItem.snippet.publishedAt | getDateFromString | date: 'dd-LL-yyyy / hh:mm' }}
+    </p>
+    <p class="search-item__title">{{ searchItem.snippet.title }}</p>
+  </div>
+  <button [routerLink]="['card', searchItem.id]" class="search-item__btn" mat-raised-button>more</button>
+  <router-outlet></router-outlet>
+</div>
