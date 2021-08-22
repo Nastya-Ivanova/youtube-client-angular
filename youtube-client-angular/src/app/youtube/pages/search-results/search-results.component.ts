@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit } from '@angular/core';
-import { ISearchItem } from './search-item/search-item.model';
 import { TSortKey, TSortOrder } from './filters/filters.types';
-import { ShowSearchResultsService } from '../../services/show-search-results.service';
 import { ShowFiltersService } from '../../services/show-filters.service';
-import { CardsHttpService } from '../../../core/services/cards-http.service';
+import { HttpService, IYoutubeResponseItem } from '../../../core/services/http.service';
+import { Observable, Subscription } from 'rxjs';
+import { StoreService } from '../../../store/store.service';
 
 @Component({
   selector: 'app-search-results',
@@ -11,10 +11,10 @@ import { CardsHttpService } from '../../../core/services/cards-http.service';
   styleUrls: ['./search-results.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent {
   @Input() isFilters = false;
-
-  searchItems: ISearchItem[] = [];
+  searchStr!: string;
+  searchItems$!: Observable<IYoutubeResponseItem[]>;
   filterStr: string = '';
   sortKey: TSortKey = 'date';
   sortOrder: TSortOrder = 'desc';
@@ -22,17 +22,16 @@ export class SearchResultsComponent implements OnInit {
     date: 'desc',
     views: 'desc',
   };
+  subscription: Subscription;
 
   constructor(
-    private cardsHttpService: CardsHttpService,
-    public showSearchResults: ShowSearchResultsService,
+    private cardsHttpService: HttpService,
     public showFiltersService: ShowFiltersService,
-  ) {}
-
-  ngOnInit(): void {
-    this.cardsHttpService.get().subscribe((cards) => {
-      this.searchItems = cards;
-      return this.searchItems;
+    public storeService: StoreService,
+  ) {
+    this.subscription = this.storeService.searchStr$.subscribe((str) => {
+      this.searchItems$ = this.cardsHttpService.get();
+      this.searchStr = str;
     });
   }
 
@@ -44,5 +43,9 @@ export class SearchResultsComponent implements OnInit {
     this.sortKey = key;
     this.sortOrder = this.sortData[key] === 'desc' ? 'asc' : 'desc';
     this.sortData[key] = this.sortOrder;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

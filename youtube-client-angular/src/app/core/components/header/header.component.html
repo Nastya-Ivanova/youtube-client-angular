@@ -1,11 +1,13 @@
 <div class="header">
   <div class="header__wrap">
     <a href="/" class="header__logo"></a>
-    <form class="header__search-form" (submit)="$event.preventDefault()">
-      <input class="header__search-filed" type="search" placeholder="What are you want to find out?" #SearchInput>
-      <button class="header__btn header__btn--search" mat-raised-button (click)="showSearchResults.show(SearchInput.value)">search</button>
-    </form>
-    <button class="header__btn header__btn--filter" mat-raised-button (click)="showFiltersService.show()"></button>
+    <input
+      [ngModel]="storeService.searchStr$ | async"
+      (ngModelChange)="search($event)"
+      class="header__search-filed"
+      type="search"
+      placeholder="What are you want to find out?">
+    <button class="header__btn header__btn--filter" (click)="showFiltersService.show()"></button>
   </div>
   <app-login-user></app-login-user>
   <button class="header__btn header__btn--logout" (click)="logout()">Logout</button>

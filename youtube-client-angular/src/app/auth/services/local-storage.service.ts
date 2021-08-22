@@ -6,9 +6,12 @@ import { URL } from '../../types/url.types';
   providedIn: 'root',
 })
 export class LocalStorageService {
+  login!:string;
+
   constructor(private router: Router) {}
 
-  set() {
+  set(login:string) {
+    this.login = login;
     const token = Math.random().toString(16);
     localStorage.setItem('token', token);
     this.router.navigateByUrl(URL.main);
@@ -17,6 +20,10 @@ export class LocalStorageService {
   get() {
     const token: string | null = localStorage.getItem('token');
     return Boolean(token);
+  }
+
+  getLogin(){
+    return this.login;
   }
 
   clear() {

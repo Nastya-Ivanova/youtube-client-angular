@@ -14,7 +14,6 @@ import { GetDateFromStringPipe } from './pipes/get-date-from-string.pipe';
 import { BorderBottomColorDirective } from './pages/search-results/search-item/directives/border-bottom-color.directive';
 import { CoreModule } from '../core/core.module';
 import {ShowFiltersService} from "./services/show-filters.service";
-import {ShowSearchResultsService} from "./services/show-search-results.service";
 
 @NgModule({
   declarations: [
@@ -26,9 +25,9 @@ import {ShowSearchResultsService} from "./services/show-search-results.service";
     FilterPipe,
     SortByPipe,
     GetDateFromStringPipe,
-    BorderBottomColorDirective,
+    BorderBottomColorDirective
   ],
-  imports: [CommonModule, CardRoutingModule, MatIconModule, CoreModule, FormsModule],
-  providers:[ShowFiltersService, ShowSearchResultsService]
+  imports: [CommonModule, CardRoutingModule, MatIconModule,CoreModule, FormsModule],
+  providers:[ShowFiltersService]
 })
 export class YoutubeModule {}

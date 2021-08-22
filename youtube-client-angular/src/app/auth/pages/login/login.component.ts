@@ -12,8 +12,7 @@ export class LoginComponent {
   constructor(private localStorageService: LocalStorageService) {}
 
   submit(myForm: NgForm) {
-    if (myForm.valid) {
-      this.localStorageService.set();
+    if (myForm.valid) {this.localStorageService.set(myForm.value.name);
     }
   }
 }

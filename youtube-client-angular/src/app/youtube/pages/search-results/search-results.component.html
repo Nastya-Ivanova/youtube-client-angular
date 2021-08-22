@@ -1,10 +1,20 @@
 <app-header></app-header>
-<app-filters *ngIf="showFiltersService.isShowFilters" (filterByStr)="filter($event)" (sortKey)="sort($event)"></app-filters>
-<div class="search-result" *ngIf="showSearchResults.isShowSearchResults">
+<app-filters
+  *ngIf="showFiltersService.isShowFilters"
+  (filterByStr)="filter($event)"
+  (sortKey)="sort($event)"
+></app-filters>
+<div class="search-result" *ngIf="storeService.isShowSearchResult">
   <app-search-item
     class="search-result__item"
-    *ngFor="let item of searchItems | filter:filterStr | sortBy:sortOrder:sortKey"
+    *ngFor="let item of searchItems$ | filter: filterStr | async"
     [searchItem]="item"
   ></app-search-item>
 </div>
+<router-outlet></router-outlet>
+
+
+<!--| sortBy:sortOrder:sortKey-->
+<!--showSearchResult-->
+<!--(showSearchResult)="show($event)"-->
 

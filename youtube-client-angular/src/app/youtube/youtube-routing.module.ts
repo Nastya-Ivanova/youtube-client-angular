@@ -7,8 +7,8 @@ const routes: Routes = [
   {
     path: '',
     component: SearchResultsComponent,
+    children: [{ path: 'video/:id', component: CardComponent }],
   },
-  { path: 'card/:id', component: CardComponent },
 ];
 
 @NgModule({
