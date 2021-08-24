@@ -6,9 +6,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title:string = 'youtube-client';
-  isSearchResult:boolean = false;
-  isFilters:boolean = false;
+  title = 'youtube-client';
+  isSearchResult = false;
+  isFilters = false;
 
   setSearchResult(state:boolean):void{
     this.isSearchResult = state;

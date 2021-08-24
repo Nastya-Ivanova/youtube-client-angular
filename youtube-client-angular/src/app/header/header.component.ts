@@ -7,21 +7,21 @@ import {Component, ChangeDetectionStrategy, Output, EventEmitter} from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  @Output() isSearchStr = new EventEmitter<boolean>();
-  @Output() isFilters = new EventEmitter<boolean>();
+  @Output() searchChanged = new EventEmitter<boolean>();
+  @Output() filtersChanged = new EventEmitter<boolean>();
 
-  searchStr:string = '';
-  filters:boolean = false;
+  searchStr = '';
+  filters = false;
 
   setSearchStr(str:string):void{
     if(str.trim() && str !== this.searchStr){
       this.searchStr = str;
-      this.isSearchStr.emit(true);
+      this.searchChanged.emit(true);
     }
   }
 
   setIsFilters():void{
     this.filters = !this.filters;
-    this.isFilters.emit(this.filters);
+    this.filtersChanged.emit(this.filters);
   }
 }

@@ -17,14 +17,7 @@ export class SortByPipe implements PipeTransform {
     this.res = sortArr.sort((a:ISearchItem, b:ISearchItem) => {
       const leftDate:Date = new Date(a.snippet.publishedAt);
       const rightDate:Date = new Date(b.snippet.publishedAt);
-
-      if(leftDate > rightDate){
-        return 1;
-      }
-      if(leftDate < rightDate){
-        return -1;
-      }
-      return 0;
+      return +leftDate - +rightDate;
     });
   }
 

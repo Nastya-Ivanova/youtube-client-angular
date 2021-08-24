@@ -14,7 +14,7 @@ export class SearchResultsComponent{
   @Input() isFilters = false;
 
   searchItems:ISearchItem[] = responseData.items;
-  filterStr:string = '';
+  filterStr = '';
   sortKey:TSortKey = 'date';
   sortOrder:TSortOrder = 'desc';
   sortData:{[key in TSortKey]:TSortOrder} = {

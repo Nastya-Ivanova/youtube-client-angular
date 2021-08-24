@@ -12,10 +12,10 @@ export class FiltersComponent{
   @Output() sortKey = new EventEmitter<TSortKey>();
 
   filterStr?:string;
-  isDateDesc:boolean = false;
-  isViewsDesc:boolean = false;
-  arrowDateHidden:boolean = false;
-  arrowViewsHidden:boolean = true;
+  isDateDesc = false;
+  isViewsDesc = false;
+  arrowDateHidden = false;
+  arrowViewsHidden = true;
 
   changeFilterStr(){
     this.filterByStr.emit(this.filterStr);

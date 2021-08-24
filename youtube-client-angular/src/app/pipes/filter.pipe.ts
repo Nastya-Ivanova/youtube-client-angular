@@ -5,7 +5,7 @@ import {ISearchItem} from "../search-results/search-item/search-item.model";
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  str:string = '';
+  str = '';
 
   transform(filterArr:ISearchItem[], filterStr:string):ISearchItem[] {
     this.str = filterStr.trim().toLowerCase();

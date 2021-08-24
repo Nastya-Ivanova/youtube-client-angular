@@ -7,7 +7,12 @@ const MILLISECONDS_PER_DAY = 1000*60*60*24;
   selector: '[appBorderBottomColor]'
 })
 export class BorderBottomColorDirective implements OnInit{
-  @Input('appBorderBottomColor') postDate!:string;
+  @Input('appBorderBottomColor') postDate = '';
+  colors = [
+    [30, 183, EBorderColor.yellow],
+    [8, 30, EBorderColor.green],
+    [0, 8, EBorderColor.blue]
+  ]
 
   constructor(private elementRef:ElementRef, private renderer: Renderer2) { }
 
@@ -16,10 +21,8 @@ export class BorderBottomColorDirective implements OnInit{
     const publicDate:Date = new Date(this.postDate);
     const daysAfterPublication:number = Math.ceil((currentDate.getTime() - publicDate.getTime()) / MILLISECONDS_PER_DAY);
 
-    const borderColor:string = (daysAfterPublication >= 183) ? EBorderColor.red :
-      (daysAfterPublication >= 30 && daysAfterPublication < 183) ? EBorderColor.yellow :
-        (daysAfterPublication >= 8 && daysAfterPublication < 30) ? EBorderColor.green :
-          EBorderColor.blue;
+    const color = this.colors.find(color => daysAfterPublication >= color[0] && daysAfterPublication <= color[1]);
+    const borderColor = color ? color[2] : EBorderColor.red;
 
     this.renderer.setStyle(this.elementRef.nativeElement, 'border-bottom-color', borderColor);
   }
