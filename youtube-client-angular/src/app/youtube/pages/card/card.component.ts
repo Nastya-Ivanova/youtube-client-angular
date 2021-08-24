@@ -15,11 +15,11 @@ export class CardComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private cardsHttpService: CardsHttpService) {}
   ngOnInit(): void {
-    this.getCard();
+    this.card$ = this.getCard();
   }
 
-  getCard(): void {
+  getCard(): Observable<ISearchItem> {
     const id = this.route.snapshot.paramMap.get('id')!;
-    this.card$ = this.cardsHttpService.getById(id);
+    return this.cardsHttpService.getById(id);
   }
 }

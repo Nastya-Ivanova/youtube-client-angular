@@ -10,7 +10,7 @@ import { URL } from '../../types/url.types';
 export class CanActivateLoginGuard implements CanActivate {
   constructor(private router: Router, private localStorageService: LocalStorageService) {}
   canActivate(): Observable<boolean> | boolean {
-    if (!this.localStorageService.get()) {
+    if (!this.localStorageService.getToken()) {
       this.router.navigateByUrl(URL.login);
       return false;
     }

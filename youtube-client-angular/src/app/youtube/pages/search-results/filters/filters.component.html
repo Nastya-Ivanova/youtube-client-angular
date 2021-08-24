@@ -9,7 +9,7 @@
           [ngClass]="{filters__desc: !isViewsDesc, filters__descHidden: arrowViewsHidden}"
   >count of views</button>
   <div class="filters__wrap">
-    <p class="filters__text">by word or sentence</p>
+    <label class="filters__text">by word or sentence</label>
     <input class="filters__field" type="text"
            [(ngModel)]="filterStr"
            (ngModelChange)="changeFilterStr()"

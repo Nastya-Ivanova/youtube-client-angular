@@ -11,7 +11,7 @@ export class FiltersComponent {
   @Output() filterByStr = new EventEmitter<string>();
   @Output() sortKey = new EventEmitter<TSortKey>();
 
-  filterStr?:string;
+  filterStr = '';
   isDateDesc = false;
   isViewsDesc = false;
   arrowDateHidden = false;
