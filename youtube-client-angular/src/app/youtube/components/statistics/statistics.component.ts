@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { ISearchItem } from '../../pages/search-results/search-item/search-item.model';
+import { ISearchResult } from '../../models/search-result.model';
 
 @Component({
   selector: 'app-statistics',
@@ -8,5 +8,5 @@ import { ISearchItem } from '../../pages/search-results/search-item/search-item.
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatisticsComponent {
-  @Input() card!: ISearchItem;
+  @Input() searchItem!: ISearchResult;
 }

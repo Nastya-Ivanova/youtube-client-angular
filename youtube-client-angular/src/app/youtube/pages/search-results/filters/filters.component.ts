@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { TSortKey } from './filters.types';
+import { TSortKey } from '../../../types/filters.types';
 
 @Component({
   selector: 'app-filters',

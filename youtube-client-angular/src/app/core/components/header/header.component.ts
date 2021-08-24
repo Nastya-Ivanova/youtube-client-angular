@@ -1,9 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
-import { ShowSearchResultsService } from '../../../youtube/services/show-search-results.service';
-import { ShowFiltersService } from '../../../youtube/services/show-filters.service';
-import { LocalStorageService } from '../../../auth/services/local-storage.service';
-import { URL } from '../../../types/url.types';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs/operators';
+import { ShowFiltersService } from '../../services/show-filters.service';
+import { StoreService } from '../../../store/store.service';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +10,26 @@ import { URL } from '../../../types/url.types';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+  subscription = new Subscription();
+  search = new Subject<string>();
+
   constructor(
-    public showSearchResults: ShowSearchResultsService,
     public showFiltersService: ShowFiltersService,
-    private localStorageService: LocalStorageService,
-    private router: Router,
+    public storeService: StoreService,
   ) {}
 
-  logout() {
-    this.localStorageService.clear();
-    this.router.navigateByUrl(URL.login);
+  ngOnInit() {
+    const search = this.search.pipe(
+      filter((str) => str.length > 2),
+      debounceTime(1000),
+      distinctUntilChanged(),
+      tap(() => this.storeService.setIsShowSearchResult(true)),
+    );
+    this.subscription = search.subscribe((searchStr) => this.storeService.setSearchStr(searchStr));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

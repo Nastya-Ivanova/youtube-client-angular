@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { ISearchItem } from '../search-results/search-item/search-item.model';
-import { CardsHttpService } from '../../../core/services/cards-http.service';
+import { map } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StoreService } from '../../../store/store.service';
+import { ISearchResult } from '../../models/search-result.model';
 
 @Component({
   selector: 'app-card',
@@ -11,15 +12,24 @@ import { CardsHttpService } from '../../../core/services/cards-http.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent implements OnInit {
-  card$!: Observable<ISearchItem>;
+  video$!: Observable<ISearchResult | undefined>;
 
-  constructor(private route: ActivatedRoute, private cardsHttpService: CardsHttpService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private storeService: StoreService,
+    private router: Router,
+  ) {}
+
   ngOnInit(): void {
-    this.card$ = this.getCard();
+    this.storeService.setIsShowSearchResult(false);
+    const videoId = this.route.snapshot.paramMap.get('id')!;
+    this.video$ = this.storeService.searchResult$.pipe(
+      map((searchResult) => searchResult.find((res) => res.id === videoId)),
+    );
   }
 
-  getCard(): Observable<ISearchItem> {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    return this.cardsHttpService.getById(id);
+  back() {
+    this.storeService.setIsShowSearchResult(true);
+    this.router.navigate(['/main']);
   }
 }

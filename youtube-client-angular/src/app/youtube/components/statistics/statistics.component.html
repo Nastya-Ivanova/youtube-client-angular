@@ -1,11 +1,11 @@
 <ul class="statistics-list">
   <li class="statistics-list__item">
     <mat-icon aria-hidden="false" aria-label="Example eye icon">remove_red_eye</mat-icon>
-    <span class="statistics-list__text">{{ card.statistics.viewCount }}</span>
+    <span class="statistics-list__text">{{ searchItem.statistic.viewCount }}</span>
   </li>
   <li class="statistics-list__item">
     <mat-icon aria-hidden="false" aria-label="Example likes icon">favorite</mat-icon>
-    <span class="statistics-list__text">{{ card.statistics.likeCount }}</span>
+    <span class="statistics-list__text">{{ searchItem.statistic.likeCount }}</span>
   </li>
   <li class="statistics-list__item">
     <mat-icon
@@ -13,7 +13,7 @@
       aria-hidden="false"
       aria-label="Example dislikes icon"
     ></mat-icon>
-    <span class="statistics-list__text">{{ card.statistics.dislikeCount }}</span>
+    <span class="statistics-list__text">{{ searchItem.statistic.dislikeCount }}</span>
   </li>
   <li class="statistics-list__item">
     <mat-icon
@@ -21,7 +21,6 @@
       aria-hidden="false"
       aria-label="Example dislikes icon"
     ></mat-icon>
-    <span class="statistics-list__text">{{ card.statistics.commentCount }}</span>
+    <span class="statistics-list__text">{{ searchItem.statistic.commentCount }}</span>
   </li>
 </ul>
-

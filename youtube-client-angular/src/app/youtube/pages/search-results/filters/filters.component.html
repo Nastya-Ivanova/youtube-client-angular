@@ -1,18 +1,18 @@
 <div class="filters">
   <p class="filters__title">Sorting by:</p>
   <button class="filters__btn"
-          (click)="setSortKey('date')"
-          [ngClass]="{filters__desc: isDateDesc, filters__descHidden: arrowDateHidden}"
+    (click)="setSortKey('date')"
+    [ngClass]="{filters__desc: isDateDesc, filters__descHidden: arrowDateHidden}"
   >date</button>
   <button class="filters__btn filters__desc-hidden"
-          (click)="setSortKey('views')"
-          [ngClass]="{filters__desc: !isViewsDesc, filters__descHidden: arrowViewsHidden}"
+    (click)="setSortKey('views')"
+    [ngClass]="{filters__desc: !isViewsDesc, filters__descHidden: arrowViewsHidden}"
   >count of views</button>
   <div class="filters__wrap">
     <label class="filters__text">by word or sentence</label>
     <input class="filters__field" type="text"
-           [(ngModel)]="filterStr"
-           (ngModelChange)="changeFilterStr()"
+      [(ngModel)]="filterStr"
+      (ngModelChange)="changeFilterStr()"
     >
   </div>
 </div>

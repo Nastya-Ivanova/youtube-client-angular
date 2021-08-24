@@ -1,4 +1,8 @@
 <div class="login">
-  <span class="login__name">Your Name</span>
+  <span class="login__name">{{authService.login$ | async}}</span>
   <mat-icon aria-hidden="false" aria-label="Example person icon">account_box</mat-icon>
+  <button class="login__btn-logout"
+          (click)="logout()"
+          [class.visible]="(authService.login$ | async) !== 'Your name'"
+  >Logout</button>
 </div>
