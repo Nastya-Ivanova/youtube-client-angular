@@ -18,5 +18,5 @@ export interface IStatisticsResponseItems {
     dislikeCount: string;
     favoriteCount: string;
     commentCount: string;
-  };
+  }
 }

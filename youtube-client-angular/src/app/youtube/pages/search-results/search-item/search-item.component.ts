@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { ISearchResult } from '../../../models/search-result.model';
+import { ICustomCard } from '../../../../redux/state.model';
 
 @Component({
   selector: 'app-search-item',
@@ -8,5 +9,5 @@ import { ISearchResult } from '../../../models/search-result.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchItemComponent {
-  @Input() searchItem!: ISearchResult;
+  @Input() searchItem!: ICustomCard | ISearchResult;
 }

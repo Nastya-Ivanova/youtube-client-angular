@@ -58,3 +58,26 @@
 
   cursor: pointer;
 }
+
+.search-item.custom-card{
+  position: relative;
+
+  &::before{
+    content: "custom card";
+
+    width: 100px;
+    height: 35px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: #dc324a;
+    border-top-left-radius: 5px;
+
+    font-size: 14px;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+}
+}

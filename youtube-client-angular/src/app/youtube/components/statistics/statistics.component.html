@@ -1,4 +1,4 @@
-<ul class="statistics-list">
+<ul class="statistics-list" *ngIf="searchItem">
   <li class="statistics-list__item">
     <mat-icon aria-hidden="false" aria-label="Example eye icon">remove_red_eye</mat-icon>
     <span class="statistics-list__text">{{ searchItem.statistic.viewCount }}</span>

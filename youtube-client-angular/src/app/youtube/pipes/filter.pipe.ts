@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Observable } from 'rxjs';
-import {map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ISearchResult } from '../models/search-result.model';
+import { ICustomCard } from '../../redux/state.model';
 
 @Pipe({
   name: 'filter',
@@ -10,9 +11,9 @@ export class FilterPipe implements PipeTransform {
   str = '';
 
   transform(
-    filterArr: Observable<ISearchResult[]>,
+    filterArr: Observable<(ICustomCard | ISearchResult)[]>,
     filterStr: string,
-  ): Observable<ISearchResult[]> {
+  ): Observable<(ICustomCard | ISearchResult)[]> {
     this.str = filterStr.trim().toLowerCase();
     if (!this.str) {
       return filterArr;

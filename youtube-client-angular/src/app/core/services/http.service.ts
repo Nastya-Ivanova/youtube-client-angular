@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 import { StoreService } from '../../store/store.service';
 import { IVideosResponse, IVideosResponseItems } from '../../youtube/models/videos-response.model';
 import {
   IStatisticsResponse,
   IStatisticsResponseItems,
 } from '../../youtube/models/statistics-response.model';
+import { State } from '../../redux/state.model';
+import { setYoutubeCardAction } from '../../redux/actions/set-custom-card.action';
 
 @Injectable()
 export class HttpService {
@@ -17,8 +20,7 @@ export class HttpService {
 
   constructor(
     private httpService: HttpClient,
-    private router: Router,
-    private storeService: StoreService,
+    private store: Store<State>,
   ) {}
 
   getVideos$(searchStr: string): Observable<IVideosResponse> {
@@ -42,7 +44,8 @@ export class HttpService {
         );
       }),
 
-      map((res) => res.videosItems.map((item: IVideosResponseItems) => ({
+      map((res) =>
+        res.videosItems.map((item: IVideosResponseItems) => ({
           id: item.id.videoId,
           publishedAt: item.snippet.publishedAt,
           title: item.snippet.title,
@@ -51,10 +54,13 @@ export class HttpService {
           statistic: res.statisticsItems.find(
             (stat: IStatisticsResponseItems) => stat.id === item.id.videoId,
           )!.statistics,
-        }))),
+        })),
+      ),
 
       catchError(() => of([])),
     );
-    this.storeService.setSearchResult(result$);
+    result$.subscribe((result) => {
+      result.map((item) => this.store.dispatch(setYoutubeCardAction({ youtubeCard: { ...item } })));
+    });
   }
 }

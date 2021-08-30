@@ -6,8 +6,9 @@
 <div class="search-result" *ngIf="storeService.isShowSearchResult$ | async">
   <app-search-item
     class="search-result__item"
-    *ngFor="let item of storeService.searchResult$ | filter: filterStr | sortBy:sortOrder:sortKey | async"
+    *ngFor="let item of searchResult$ | filter: filterStr | sortBy:sortOrder:sortKey | async"
     [searchItem]="item"
   ></app-search-item>
 </div>
 <router-outlet></router-outlet>
+

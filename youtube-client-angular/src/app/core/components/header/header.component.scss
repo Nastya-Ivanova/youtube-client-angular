@@ -27,6 +27,8 @@
   height: 50px;
 
   background: url('/assets/img/logo.png') no-repeat center;
+  border: none;
+  cursor: pointer;
 }
 
 .header__search-form {
@@ -74,6 +76,11 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 15px;
+    border-radius: 5px;
+  }
+
+  &--create-card{
+    line-height: 23px;
     border-radius: 5px;
   }
 }

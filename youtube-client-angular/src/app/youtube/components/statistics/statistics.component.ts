@@ -8,5 +8,6 @@ import { ISearchResult } from '../../models/search-result.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatisticsComponent {
-  @Input() searchItem!: ISearchResult;
+  // @Input() searchItem!: ISearchResult;
+  @Input() searchItem!: ISearchResult | any;
 }

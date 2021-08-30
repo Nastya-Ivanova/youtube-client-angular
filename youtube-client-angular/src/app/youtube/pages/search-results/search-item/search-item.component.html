@@ -1,7 +1,7 @@
-<div class="search-item" [appBorderBottomColor]="searchItem.publishedAt">
+<div [class.custom-card]="!searchItem.hasOwnProperty('statistic')" class="search-item" [appBorderBottomColor]="searchItem.publishedAt">
   <div class="search-item__wrap">
     <img class="search-item__img" src="{{ searchItem.url }}" />
-    <app-statistics [searchItem]="searchItem"></app-statistics>
+    <app-statistics *ngIf="searchItem.hasOwnProperty('statistic')" [searchItem]="searchItem"></app-statistics>
     <p class="search-item__date">
       {{ searchItem.publishedAt | getDateFromString | date: 'dd-LL-yyyy / hh:mm' }}
     </p>

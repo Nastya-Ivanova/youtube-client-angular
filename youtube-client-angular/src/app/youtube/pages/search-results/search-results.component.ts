@@ -1,9 +1,14 @@
 import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { pairwise } from 'rxjs/operators';
 import { TSortKey, TSortOrder } from '../../types/filters.types';
 import { ShowFiltersService } from '../../../core/services/show-filters.service';
 import { HttpService } from '../../../core/services/http.service';
 import { StoreService } from '../../../store/store.service';
+import { ICustomCard, State } from '../../../redux/state.model';
+import { getAllCards } from '../../../redux/selectors/custom-cards.selectors';
+import { ISearchResult } from '../../models/search-result.model';
 
 @Component({
   selector: 'app-search-results',
@@ -21,18 +26,25 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     views: 'desc',
   };
 
+  searchResult$!: Observable<(ICustomCard | ISearchResult)[]>;
+
   constructor(
     private httpService: HttpService,
     public showFiltersService: ShowFiltersService,
     public storeService: StoreService,
+    private store: Store<State>,
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.storeService.searchStr$.subscribe((searchStr: string) => {
-      if (searchStr.length > 0) {
-        this.httpService.getSearchResult$(searchStr);
-      }
-    });
+    this.subscription = this.storeService.searchStr$
+      .pipe(pairwise())
+      .subscribe(([previous, current]) => {
+        if (previous !== current) {
+          this.httpService.getSearchResult$(current);
+        }
+      });
+
+    this.searchResult$ = this.store.select(getAllCards);
   }
 
   setFilterStr(str: string): void {

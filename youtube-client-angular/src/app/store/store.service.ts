@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { ISearchResult } from '../youtube/models/search-result.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoreService {
-  searchResult$: Observable<ISearchResult[]> = of([]);
-
   private isShowSearchResult = new BehaviorSubject(false);
   isShowSearchResult$ = this.isShowSearchResult.asObservable();
 
@@ -20,9 +17,5 @@ export class StoreService {
 
   setIsShowSearchResult(state: boolean) {
     this.isShowSearchResult.next(state);
-  }
-
-  setSearchResult(searchResult: Observable<ISearchResult[]>) {
-    this.searchResult$ = searchResult;
   }
 }

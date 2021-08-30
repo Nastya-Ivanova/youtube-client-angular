@@ -8,6 +8,6 @@
     </div>
     <p class="card__desc">Description:</p>
     <p class="card__text">{{video.description}}</p>
-    <app-statistics [searchItem]="video"></app-statistics>
+    <app-statistics *ngIf="video.hasOwnProperty('statistic')" [searchItem]="video"></app-statistics>
   </div>
 </div>
