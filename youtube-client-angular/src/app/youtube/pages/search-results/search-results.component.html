@@ -1,7 +1,7 @@
 <app-filters
   *ngIf="showFiltersService.isShowFilters$ | async"
-  (filterByStr)="filter($event)"
-  (sortKey)="sort($event)"
+  (filterByStr)="setFilterStr($event)"
+  (sortKey)="setSortParams($event)"
 ></app-filters>
 <div class="search-result" *ngIf="storeService.isShowSearchResult$ | async">
   <app-search-item

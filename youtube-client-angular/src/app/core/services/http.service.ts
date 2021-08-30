@@ -22,14 +22,12 @@ export class HttpService {
   ) {}
 
   getVideos$(searchStr: string): Observable<IVideosResponse> {
-    // console.log('get v')
     return this.httpService.get<IVideosResponse>(
       `${this.searchURL}?type=video&part=snippet&maxResults=10&q=${searchStr}`,
     );
   }
 
   getStatistics$(idsStr: string): Observable<IStatisticsResponse> {
-    // console.log('get s')
     return this.httpService.get<IStatisticsResponse>(
       `${this.videosURL}?part=statistics&id=${idsStr}`,
     );

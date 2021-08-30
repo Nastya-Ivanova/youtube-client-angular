@@ -43,3 +43,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Angular Environment variables in .gitignore
+environment.ts
+environment.prod.ts

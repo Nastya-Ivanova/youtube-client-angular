@@ -7,7 +7,7 @@ import {
   HttpInterceptor,
   HttpParams,
 } from '@angular/common/http';
-import { YOUTUBE_API_KEY } from '../../constants/youtube-api-key';
+import {YOUTUBE_API_KEY} from "../../../environments/environment";
 
 @Injectable()
 export class SearchInterceptor implements HttpInterceptor {

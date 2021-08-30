@@ -35,11 +35,11 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
     });
   }
 
-  filter(str: string): void {
+  setFilterStr(str: string): void {
     this.filterStr = str;
   }
 
-  sort(key: TSortKey): void {
+  setSortParams(key: TSortKey): void {
     this.sortKey = key;
     this.sortOrder = this.sortData[key] === 'desc' ? 'asc' : 'desc';
     this.sortData[key] = this.sortOrder;
