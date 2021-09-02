@@ -1,0 +1,36 @@
+<div class="search-item" [appBorderBottomColor]="searchItem.snippet.publishedAt">
+  <div class="search-item__wrap">
+    <img class="search-item__img" src="{{ searchItem.snippet.thumbnails.medium.url }}" />
+    <ul class="search-item__icon-list">
+      <li class="search-item__icon-item">
+        <mat-icon aria-hidden="false" aria-label="Example eye icon">remove_red_eye</mat-icon>
+        <span class="search-item__icon-text">{{ searchItem.statistics.viewCount }}</span>
+      </li>
+      <li class="search-item__icon-item">
+        <mat-icon aria-hidden="false" aria-label="Example likes icon">favorite</mat-icon>
+        <span class="search-item__icon-text">{{ searchItem.statistics.likeCount }}</span>
+      </li>
+      <li class="search-item__icon-item">
+        <mat-icon
+          class="search-item__icon-item-dislikes"
+          aria-hidden="false"
+          aria-label="Example dislikes icon"
+        ></mat-icon>
+        <span class="search-item__icon-text">{{ searchItem.statistics.dislikeCount }}</span>
+      </li>
+      <li class="search-item__icon-item">
+        <mat-icon
+          class="search-item__icon-item-commits"
+          aria-hidden="false"
+          aria-label="Example dislikes icon"
+        ></mat-icon>
+        <span class="search-item__icon-text">{{ searchItem.statistics.commentCount }}</span>
+      </li>
+    </ul>
+    <p class="search-item__date">
+      {{ searchItem.snippet.publishedAt | getDateFromString | date: 'dd-LL-yyyy / hh:mm' }}
+    </p>
+    <p class="search-item__title">{{ searchItem.snippet.title }}</p>
+  </div>
+  <button class="search-item__btn" mat-raised-button>more</button>
+</div>

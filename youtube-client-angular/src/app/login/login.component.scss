@@ -1,0 +1,19 @@
+.login {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 140px;
+}
+
+.login__name {
+  color: #4f4f4f;
+  font-size: 12px;
+}
+
+.mat-icon {
+  margin-left: 8px;
+
+  font-size: 26px;
+  color: #2f80ed;
+}
