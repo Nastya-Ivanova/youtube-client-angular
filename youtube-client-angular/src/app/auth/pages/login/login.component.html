@@ -1,0 +1,10 @@
+<form class="login-form" (ngSubmit)="submit(myForm)" #myForm="ngForm">
+  <h2 class="login-form__title">Login</h2>
+  <label class="login-form__label" for="name">login</label>
+  <input name="name" ngModel #name="ngModel" class="login-form__field" id="name" type="text" required>
+  <div *ngIf="name.invalid" class="login-form__error-message">Required field</div>
+  <label class="login-form__label" for="password">password</label>
+  <input name="password" ngModel #password="ngModel" class="login-form__field" id="password" type="password" required>
+  <div *ngIf="password.invalid" class="login-form__error-message">Required field</div>
+  <button [disabled]="name.invalid || password.invalid" class="login-form__btn" type="submit">Login</button>
+</form>

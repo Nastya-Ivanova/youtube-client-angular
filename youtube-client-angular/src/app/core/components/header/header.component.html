@@ -1,0 +1,14 @@
+<div class="header">
+  <div class="header__wrap">
+    <button routerLink="/main" class="header__logo"></button>
+    <input
+      [ngModel]="storeService.searchStr$ | async"
+      (ngModelChange)="search.next($event)"
+      class="header__search-filed"
+      type="search"
+      placeholder="What are you want to find out?">
+    <button class="header__btn header__btn--filter" (click)="showFiltersService.show()"></button>
+  </div>
+  <button class="header__btn header__btn--create-card" routerLink="admin">Create custom card</button>
+  <app-login-user></app-login-user>
+</div>

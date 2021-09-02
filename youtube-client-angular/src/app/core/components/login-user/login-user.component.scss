@@ -1,0 +1,40 @@
+.login {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  width: 140px;
+}
+
+.login__name {
+  color: #4f4f4f;
+  font-size: 12px;
+}
+
+.mat-icon {
+  margin-left: 8px;
+
+  font-size: 26px;
+  color: #2f80ed;
+}
+
+.login__btn-logout {
+  display: none;
+
+  width: 80px;
+
+  margin-left: 15px;
+
+  font-size: 12px;
+  line-height: 24px;
+  color: #ffffff;
+
+  border-radius: 5px;
+  background-color: #2f80ed;
+  border: none;
+  cursor: pointer;
+}
+
+.login__btn-logout.visible{
+  display: block;
+}

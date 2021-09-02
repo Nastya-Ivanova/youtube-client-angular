@@ -1,0 +1,24 @@
+:host{
+  display: flex;
+  justify-content: center;
+
+  margin-top: 200px;
+}
+
+.page404{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 360px;
+}
+
+.page404__text{
+  margin: 0 0 0 30px;
+
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #828282;
+}

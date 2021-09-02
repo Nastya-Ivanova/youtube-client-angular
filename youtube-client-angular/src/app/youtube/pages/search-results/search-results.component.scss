@@ -1,0 +1,11 @@
+.search-result {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin: 30px 150px;
+}
+
+.search-result__item {
+  display: flex;
+}

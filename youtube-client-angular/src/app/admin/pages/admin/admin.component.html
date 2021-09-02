@@ -1,0 +1,12 @@
+<form [formGroup]="customCardForm" (ngSubmit)="submit()" class="admin-form">
+  <h2 class="admin-form__title">Create new card</h2>
+  <label for="title" class="admin-form__label">Title</label>
+  <input formControlName="title" id="title" class="admin-form__field" type="text">
+  <label for="description" class="admin-form__label">Description</label>
+  <input formControlName="description" id="description" class="admin-form__field" type="text">
+  <label for="imgUrl" class="admin-form__label">Img</label>
+  <input formControlName="imgUrl" id="imgUrl" class="admin-form__field" type="text">
+  <label for="videoUrl" class="admin-form__label">Link video</label>
+  <input formControlName="videoUrl" id="videoUrl" class="admin-form__field" type="text">
+  <button type="submit" class="admin-form__btn">Create card</button>
+</form>
