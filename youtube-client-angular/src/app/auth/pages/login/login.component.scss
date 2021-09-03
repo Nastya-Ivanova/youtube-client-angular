@@ -1,0 +1,80 @@
+:host{
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+  top: 25%;
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+
+  width: 344px;
+
+  padding: 30px 20px;
+
+  font-family: Roboto;
+
+  background-color: #F2F2F2;
+  border-radius: 5px;
+}
+
+.login-form__title{
+  margin: 0 0 22px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+}
+
+.login-form__label{
+  margin-bottom: 5px;
+
+  font-size: 10px;
+  line-height: 12px;
+  color: #828282;
+}
+
+.login-form__field{
+  margin-bottom: 10px;
+
+  font-size: 10px;
+  line-height: 37px;
+  color: #000000;
+
+  background-color: #E0E0E0;
+  border:none;
+}
+
+.login-form__btn{
+  align-self: flex-end;
+
+  margin-top: 22px;
+
+  width: 124px;
+
+  font-size: 12px;
+  line-height: 30px;
+  color: #FFFFFF;
+
+  background: #2F80ED;
+  border-radius: 5px;
+  border:none;
+
+  cursor: pointer;
+
+  &:disabled{
+    background-color: #666666;
+  }
+}
+
+.login-form__error-message{
+  position: relative;
+  top: -7px;
+
+  font-size: 10px;
+  color: #e75555;
+  font-style: italic;
+}

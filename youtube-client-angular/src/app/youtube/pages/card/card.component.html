@@ -1,0 +1,13 @@
+<div class="card" *ngIf="video$ | async as video">
+  <button  class="card__btn-back" (click)="back()"></button>
+  <img class="card__img" src="{{ video.url }}" alt="" width="640">
+  <div class="card__wrap">
+    <div class="card__title-wrap">
+      <h2 class="card__title">{{video.title}}</h2>
+      <span class="card__date">{{video.publishedAt | date: 'dd-LL-yyyy / hh:mm'}}</span>
+    </div>
+    <p class="card__desc">Description:</p>
+    <p class="card__text">{{video.description}}</p>
+    <app-statistics [searchItem]="video"></app-statistics>
+  </div>
+</div>

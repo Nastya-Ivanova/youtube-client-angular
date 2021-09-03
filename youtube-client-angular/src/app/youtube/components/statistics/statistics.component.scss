@@ -1,0 +1,50 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.statistics-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 223px;
+
+  margin: 21px 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.statistics-list__item {
+  display: flex;
+  align-items: center;
+}
+
+.mat-icon {
+  width: 13px;
+  height: 13px;
+
+  margin-right: 5px;
+
+  font-size: 15px;
+}
+
+.statistics-list__text {
+  font-size: 10px;
+}
+
+.statistics-list__icon-dislikes,
+.statistics-list__icon-commits {
+  background-size: 13px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.statistics-list__icon-dislikes {
+  background-image: url('/assets/img/icon-dislike.png');
+}
+
+.statistics-list__icon-commits {
+  background-image: url('/assets/img/icon-commits.png');
+}
